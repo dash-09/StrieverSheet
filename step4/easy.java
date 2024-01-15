@@ -119,7 +119,34 @@ class Solution {
 
 }
 // 9) search in rotated sorted array (ii)
+
 // 10) find minimum in rotated sorted array 
+ class Solution{
+     public int findMIn(int nums[]){
+         if(nums.length == 0)return 0;
+         if(nums.length == 1)return nums[0];
+         if(nums.length == 2)return Math.min(nums[0],nums[1]);
+
+    int left = 0, high = Integer.MAX_VALUE;
+         while(left<=high){
+             if(nums[low]<nums[high]){
+               min = Math.min(min,nums[low]);
+               break;
+             }
+             int mid = low+(high-low)/2;
+             if(nums[low] <=nums[mid]){
+                 min = Math.min(min,nums[low]);
+                 low = mid+1;
+             }
+             else{
+               min = Math.min(min,nums[mid]);
+                 high = mid-1;
+             }
+         }
+ return min;
+     }      
+ }
+     
 // 11) find out how many times array has been rotated
   class solution{
     public static void main(String args[]){
