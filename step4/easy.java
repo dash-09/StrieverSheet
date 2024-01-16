@@ -119,7 +119,38 @@ class Solution {
 
 }
 // 9) search in rotated sorted array (ii)
+ class solution{
+     public boolean findelement(int nums[], int target){
+       if(nums.length == 0)return 0;
+       if(nums.length == 1 && nums[0]==target)return true;
+       if(nums.length == 2 && (nums[0]==target||nums[1]==target))return true;
 
+         int low = 0, high = nums.length - 1;
+         while(low<=high){
+            int mid = (low+high)/2;
+             if(nums[mid]==target)return true;
+             // check the edge case where arr[mid] == arr[low] && arr[mid] == arr[high]
+               if(nums[mid]==nums[low] && nums[high] == nums[mid]){
+                 low = low + 1; high = high -1 ; continue;
+               }
+             //  checking if element present in left side sorted part
+             if(nums[mid]<=nums[low]){
+               if(nums[mid]>=target&&target>=nums[low]){
+                   high = mid-1;
+               } else{
+                    low = mid+1;
+               }
+             }else{
+               if(nums[mid]<=target&&target<=nums[high]){
+                 low = mid+1;
+               }else{
+                 high = mid-1;
+               }
+             }
+          }
+             return false;
+     }
+ }    
 // 10) find minimum in rotated sorted array 
  class Solution{
      public int findMIn(int nums[]){
