@@ -89,8 +89,112 @@ public static void main (String[] args) {
     }
 }
 // 5) floor/ ceil in sorted array 
+class solution{
+   public static void main(String args[]){
+       int arr[] = {3, 4, 4, 7, 8, 10}; int n = arr.length;
+       int low = 0 , high = n-1;
+       int ceil = -1; int x = 5;
+
+        while(low<=high){
+          int mid = (low+high)/2;
+            if(arr[mid]>= x){
+            ans = arr[mid];high = mid-1;}
+            else{low = mid+1;}
+        }
+
+
+
+       int left = 0 , right = n-1;
+       int floor = -1;
+        while(left<=right){
+            int mid = (low+high)/2;
+            if(arr[mid]<=x){
+              low = mid+1;
+            }else{
+               high = mid-1;
+             }
+        }
+       System.out.println(ceil+" "+floor);
+       
+   }
+}
+  
 // 6) find first and last occurance of a number in sorted array
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+      int res [] = new int[2];
+       Arrays.fill(res,-1);
+
+        // first occurance 
+        int low = 0; int high = nums.length - 1; int x = target;  
+          while(low<=high){
+              int mid = (low+high)/2;
+              if(nums[mid]==x){
+               res[0] = mid;
+                  high = mid-1;
+              }else if(nums[mid]<x){
+                  low = mid+1;
+              }else{
+                 high = mid-1;
+              }
+          }
+          
+
+        // last occurance
+        low = 0; high = nums.length - 1;    
+         while(low<=high){
+              int mid = (low+high)/2;
+              if(nums[mid]==x){
+                  res[1] = mid;
+                  low = mid+1;
+              }else if(nums[mid]<x){
+                   low = mid+1;
+              }else{
+                  high = mid-1;
+              }
+          }
+     
+          return res;
+}   
+}
 // 7) count occurances of a number in a sorted array with duplicates
+class Solution {
+    public int searchRange(int[] nums, int target) {
+      int res [] = new int[2];
+       Arrays.fill(res,-1);
+
+        // first occurance 
+        int low = 0; int high = nums.length - 1; int x = target;  
+          while(low<=high){
+              int mid = (low+high)/2;
+              if(nums[mid]==x){
+               res[0] = mid;
+                  high = mid-1;
+              }else if(nums[mid]<x){
+                  low = mid+1;
+              }else{
+                 high = mid-1;
+              }
+          }
+          
+
+        // last occurance
+        low = 0; high = nums.length - 1;    
+         while(low<=high){
+              int mid = (low+high)/2;
+              if(nums[mid]==x){
+                  res[1] = mid;
+                  low = mid+1;
+              }else if(nums[mid]<x){
+                   low = mid+1;
+              }else{
+                  high = mid-1;
+              }
+          }
+     
+          return res[1]-res[0]+1;
+}   
+}
 // 8) search in rotated sorted array (i)(no duplicates)
 class Solution {
     public int search(int[] nums, int target) {
