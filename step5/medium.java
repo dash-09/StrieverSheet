@@ -96,11 +96,74 @@ class Solution {
     }
 }
 // Implement Atoi	
+class Solution {
+    public int myAtoi(String s) {
+        if (s.equals("")) {
+            return 0;
+        }
 
+        // helper variables
+        int res = 0, i = 0, sign = 1;
+
+        // get rid of whitespace
+        while (i < s.length() && s.charAt(i) == ' ') {
+            i++;
+        }
+
+        // check for sign
+        if (i < s.length() && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+            // change if negative, iterate
+            if (s.charAt(i++) == '-') {
+                sign = -1;
+            }
+        }
+
+        // now iterate across digits if any (if for the first time we dont have numeric
+        // value we return)
+        // should only be in range 0-9
+        while (i < s.length() && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+            // check if we will go over the max
+            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && s.charAt(i) - '0' > 7)) {
+                if (sign == -1)
+                    return Integer.MIN_VALUE;
+                return Integer.MAX_VALUE;
+            }
+            // updating result
+            res = res * 10 + (s.charAt(i++) - '0');
+        }
+        return sign * res;
+    }
+}
 
 
 // Count Number of Substrings	
 // Longest Palindromic Substring[Do it without DP]
+class Solution {
+    public String longestPalindrome(String s) {
+        int start = 0 , end = 0;
+        for(int i = 0;i<s.length();i++){
+            int odd = expand(s,i,i);
+            int even = expand(s,i,i+1);
+            int len = Math.max(odd,even);
+            if(len>end-start){
+                start = i-(len-1)/2;
+                end = i+len/2;
+            }
+        }
+        return s.substring(start,end+1);
+    }
+    int expand(String s, int left, int right){
+        while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right-left-1;
+
+    }
+}
+
+
+
 // Sum of Beauty of all substring	
 
 
