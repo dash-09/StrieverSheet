@@ -135,6 +135,37 @@ class solution{
 
 
 // find a smallest divisor
+      class Solution {
+    public int smallestDivisor(int[] nums, int threshold) {
+
+        int sum = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            max = Math.max(max, nums[i]);
+        }
+
+        int min = 1;
+        while (min <= max) {
+            int mid = (max + min) >> 1;
+            if (possible(nums, mid, threshold)) {
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return min;
+
+    }
+
+    public static boolean possible(int arr[], int mid, int limit) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += Math.ceil((double) arr[i] / (double) mid);
+        }
+        return sum <= limit;
+    }
+}
 // capacity to ship packages within D days
 // kth missing positive number 
 // aggresive cows 
