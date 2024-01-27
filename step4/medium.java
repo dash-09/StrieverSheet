@@ -50,7 +50,90 @@ class Solution {
 
 }
 
+
+
 // minimum days to make M banquates
+
+
+// brute force approach (time > O(max-min)*arr.length)
+  class Solution{
+    public static void main(String args[]){
+      // edge case 
+       if((long)arr.length< (long)m*k)return -1; 
+      int arr[] = {7, 7, 7, 7, 13, 11, 12, 7}, m = 2, k = 3; 
+       int min = Integer.MAX_VALUE;
+       int max = Integer.MIN_VALUE;
+      for(int i = 0;i<arr.length;i++){
+        min = Math.min(arr[i],min);
+        max = Math.max(arr[i],max);
+      }
+             int ans = 0;
+      for(int i = min;i<=max;i++){
+        if(possible(arr,i,m,k){
+          ans = i;
+          break;
+        }
+      }
+      System.out.print(ans);
+      
+    }
+    public static boolean possible(int arr[], int day, int m, int k){
+         int count = 0 , numberBq = 0;
+      for(int i = 0;i<arr.length;i++){
+        if(arr[i]<=day){count++;}
+        else{
+          numberBq += count/k;
+          count = 0;
+        } 
+      }
+      numberBq += count/k;
+      return numberBq>=k;
+    }
+  }
+
+
+//  better approach using binary search 
+
+class solution{
+  public static int Ba(int arr[], int m , int k){
+      if((long)arr.length < (long)m*k){
+        return -1;
+      }
+       int min = Integer.MAX_VALUE;
+       int max = Integer.MIN_VALUE;
+      for(int i = 0;i<arr.length;i++){
+        min = Math.min(arr[i],min);
+        max = Math.max(arr[i],max);
+      }
+
+       while(min<=max){
+         int mid = (min+max)>>1;
+         if(possible(arr,mid, m, k){
+           max = mid-1;
+         }else{
+           min = mid+1;
+         }
+       }
+    return min;
+  }
+  public static boolean possible(int arr[], int mid, int m, int k){
+      int count = 0,  number = 0;
+       for(int i = 0;i<arr.length;i++){
+          if(arr[i]<=mid){count++;}
+         else{
+           number+=count/k;
+            count = 0;
+             }
+       }
+     number += count/k;
+    return number>=m;
+  }
+}
+
+
+
+
+
 // find a smallest divisor
 // capacity to ship packages within D days
 // kth missing positive number 
