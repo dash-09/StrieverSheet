@@ -1,1 +1,4 @@
-
+- there are total 32 question
+- 13 Binary Search on 1D array ✅
+- 14 Binary Search on Answers
+- BS on 2D array 
