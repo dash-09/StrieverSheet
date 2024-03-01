@@ -137,6 +137,11 @@ class Solution {
 
 
 // Count Number of Substrings	
+
+
+
+
+
 // Longest Palindromic Substring[Do it without DP]
 class Solution {
     public String longestPalindrome(String s) {
