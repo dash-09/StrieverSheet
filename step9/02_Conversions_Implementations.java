@@ -52,3 +52,25 @@ class HelloWorld {
     }
 }
 
+// b) infix to prefix 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
